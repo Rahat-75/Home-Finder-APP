@@ -1,5 +1,7 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Constants {
-  static const String domain = 'https://homefinder-backend.onrender.com';
-  static const String localhost = 'http://10.0.2.2:3000';
-  static const String server = 'https://homefinder-backend.onrender.com';
+  static String get domain => dotenv.env['SERVER_DOMAIN'] ?? 'https://homefinder-backend.onrender.com';
+  static String get localhost => dotenv.env['SERVER_LOCALHOST'] ?? 'http://10.0.2.2:3000';
+  static String get server => dotenv.env['SERVER_URL'] ?? 'https://homefinder-backend.onrender.com';
 }

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:home_finder_app/decor.dart';
 import 'package:home_finder_app/designer.dart';
 import 'package:home_finder_app/home.dart';
@@ -13,6 +14,7 @@ import 'package:home_finder_app/UserProvider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -33,7 +35,8 @@ void main() async {
         return userProvider;
       },
       child: MaterialApp(
-        initialRoute: '/', // Add this if you want to specify a default route
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
         routes: {
           '/': (context) => SplashScreen(),
           '/login': (context) => LoginPage(),
